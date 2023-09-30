@@ -15,6 +15,7 @@
 		BD4178D92AC803A6007AD426 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD4178D72AC803A6007AD426 /* LaunchScreen.storyboard */; };
 		BD4178E12AC803BC007AD426 /* ImageCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4178E02AC803BC007AD426 /* ImageCacheService.swift */; };
 		BD4178E52AC82D33007AD426 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4178E42AC82D33007AD426 /* UIImage+Extension.swift */; };
+		BD4178E82AC83198007AD426 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4178E72AC83198007AD426 /* ImageCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		BD4178DA2AC803A6007AD426 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD4178E02AC803BC007AD426 /* ImageCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheService.swift; sourceTree = "<group>"; };
 		BD4178E42AC82D33007AD426 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		BD4178E72AC83198007AD426 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 		BD4178E32AC822AB007AD426 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				BD4178E62AC83192007AD426 /* Protocol */,
 				BD4178CC2AC803A4007AD426 /* AppDelegate.swift */,
 				BD4178E02AC803BC007AD426 /* ImageCacheService.swift */,
 				BD4178CE2AC803A4007AD426 /* SceneDelegate.swift */,
@@ -87,6 +90,14 @@
 				BD4178E42AC82D33007AD426 /* UIImage+Extension.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		BD4178E62AC83192007AD426 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				BD4178E72AC83198007AD426 /* ImageCache.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD4178E82AC83198007AD426 /* ImageCache.swift in Sources */,
 				BD4178D12AC803A4007AD426 /* ViewController.swift in Sources */,
 				BD4178CD2AC803A4007AD426 /* AppDelegate.swift in Sources */,
 				BD4178E52AC82D33007AD426 /* UIImage+Extension.swift in Sources */,
