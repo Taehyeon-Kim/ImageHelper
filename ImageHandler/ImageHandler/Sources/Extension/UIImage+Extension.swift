@@ -12,7 +12,8 @@ extension UIImageView {
   func setImage(with url: String) {
     Task {
       do {
-        let image = try? await ImageCacheService.shared.setImage(with: url)
+        let imageData = try? await ImageHelper.shared.fetch(with: url)
+        let image = UIImage(data: imageData ?? Data())
         self.image = image
       }
     }

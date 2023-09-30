@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ImageCache {
-  func fetch(with url: URL) async throws -> Data?
+  func fetch(with urlString: String) async throws -> Data?
 }
 
 extension ImageCache {

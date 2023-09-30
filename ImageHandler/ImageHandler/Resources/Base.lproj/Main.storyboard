@@ -41,24 +41,32 @@
                                     <constraint firstAttribute="width" constant="200" id="gFZ-WJ-zEo"/>
                                 </constraints>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RRH-sC-KJc">
-                                <rect key="frame" x="20" y="259" width="353" height="334"/>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fIt-Mf-kyJ">
+                                <rect key="frame" x="20" y="159" width="353" height="673"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RRH-sC-KJc">
+                                        <rect key="frame" x="0.0" y="0.0" width="353" height="336.66666666666669"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Nd-a4-hwX">
+                                        <rect key="frame" x="0.0" y="336.66666666666674" width="353" height="336.33333333333326"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="eUt-01-fCQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3xy-eF-dIF"/>
-                            <constraint firstItem="RRH-sC-KJc" firstAttribute="top" secondItem="eUt-01-fCQ" secondAttribute="bottom" constant="120" id="8xC-PO-f7a"/>
-                            <constraint firstItem="RRH-sC-KJc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="E2A-cx-Ftr"/>
-                            <constraint firstItem="RRH-sC-KJc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="JN2-Us-dQK"/>
-                            <constraint firstItem="RRH-sC-KJc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Kst-3g-3G6"/>
+                            <constraint firstAttribute="bottom" secondItem="fIt-Mf-kyJ" secondAttribute="bottom" constant="20" id="KJu-Im-dBI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fIt-Mf-kyJ" secondAttribute="trailing" constant="20" id="LEh-36-aRO"/>
                             <constraint firstItem="eUt-01-fCQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="VcS-q7-FJY"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RRH-sC-KJc" secondAttribute="trailing" constant="20" id="iWD-9p-Yaj"/>
+                            <constraint firstItem="fIt-Mf-kyJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="hHa-OH-Qcl"/>
+                            <constraint firstItem="fIt-Mf-kyJ" firstAttribute="top" secondItem="eUt-01-fCQ" secondAttribute="bottom" constant="20" id="r03-hd-RSS"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="RRH-sC-KJc" id="qjf-k8-bUj"/>
+                        <outlet property="firstImageView" destination="RRH-sC-KJc" id="qjf-k8-bUj"/>
+                        <outlet property="secondImageView" destination="2Nd-a4-hwX" id="B58-Q5-fRz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
