@@ -13,7 +13,7 @@ protocol ImageRepositoryProtocol {
   func loadImageFromCache(imageURL: URL) async -> UIImage?
 }
 
-public class ImageRepository: ImageRepositoryProtocol {
+actor ImageRepository: ImageRepositoryProtocol {
   /// - URLCache는 thread-safe하다.
   /// - 인스턴스 메서드는 다중 스레드(여러 실행 컨텍스트)에서 안전하게 호출할 수 있지만
   /// - 동일한 요청에 대해서 응답을 읽거나 쓰려고 할 때 즉, 변경을 하려고 할 때 race-condition이 발생할 수 있다.
