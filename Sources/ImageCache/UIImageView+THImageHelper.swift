@@ -8,7 +8,7 @@
 import UIKit
 
 /// 사용할 클래스에 채택
-typealias THImageView = UIImageView
+public typealias THImageView = UIImageView
 extension THImageView: THImageHelperCompatible {}
 
 /// 사용할 메서드 선언
