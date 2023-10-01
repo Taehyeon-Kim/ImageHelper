@@ -19,7 +19,7 @@ public struct THImageHelperWrapper<Base> {
 }
 
 /// AnyObject와 NSObject의 차이
-protocol THImageHelperCompatible: NSObject {}
+public protocol THImageHelperCompatible: NSObject {}
 
 extension THImageHelperCompatible {
   /// 계산 프로퍼티이기 때문에 인스턴스를 매번 생성하지만,
