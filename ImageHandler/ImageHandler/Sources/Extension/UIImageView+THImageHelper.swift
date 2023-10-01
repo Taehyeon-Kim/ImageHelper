@@ -16,9 +16,13 @@ extension THImageHelperWrapper where Base: UIImageView {
   public func setImage(with url: String) {
     Task {
       do {
-        let imageData = try? await ImageHelper.shared.fetch(with: url)
-        let image = UIImage(data: imageData ?? Data())
-        await update(image: image)
+        let imageRepository = ImageRepository()
+        if let url = URL(string: url),
+           let image = await imageRepository.fetchImage(imageURL: url) {
+          await update(image: image)
+        } else {
+          await update(image: UIImage())
+        }
       }
     }
   }
