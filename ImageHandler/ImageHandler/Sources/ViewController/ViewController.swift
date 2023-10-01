@@ -20,8 +20,8 @@ final class ViewController: UIViewController {
   private let sampleImageURL02 = "https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_640.jpg"
 
   @IBAction func fetchImageButtonDidTap(_ sender: UIButton) {
-    self.firstImageView.setImage(with: sampleImageURL01)
-    self.secondImageView.setImage(with: sampleImageURL02)
+    self.firstImageView.th.setImage(with: sampleImageURL01)
+    self.secondImageView.th.setImage(with: sampleImageURL02)
   }
   
   @IBAction func resetButtonDidTap(_ sender: UIButton) {
