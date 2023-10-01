@@ -19,11 +19,13 @@ extension THWrapper where Base: UIImageView {
       do {
         let imageData = try? await ImageHelper.shared.fetch(with: url)
         let image = UIImage(data: imageData ?? Data())
-        
-        DispatchQueue.main.async {
-          self.base.image = image
-        }
+        await update(image: image)
       }
     }
+  }
+  
+  @MainActor
+  private func update(image: UIImage?) {
+    self.base.image = image
   }
 }
