@@ -20,6 +20,7 @@
 		BD4178F22AC837CF007AD426 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4178F12AC837CF007AD426 /* ImageHelper.swift */; };
 		BD9B48152AC946FE00FF9202 /* THImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9B48142AC946FE00FF9202 /* THImageHelper.swift */; };
 		BD9B48172AC94A3700FF9202 /* UIImageView+THImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9B48162AC94A3700FF9202 /* UIImageView+THImageHelper.swift */; };
+		BD9B48192AC950D700FF9202 /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9B48182AC950D700FF9202 /* ImageRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		BD4178F12AC837CF007AD426 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		BD9B48142AC946FE00FF9202 /* THImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THImageHelper.swift; sourceTree = "<group>"; };
 		BD9B48162AC94A3700FF9202 /* UIImageView+THImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+THImageHelper.swift"; sourceTree = "<group>"; };
+		BD9B48182AC950D700FF9202 /* ImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				BD4178F32AC839EB007AD426 /* ImageHelper */,
 				BD4178EC2AC833A0007AD426 /* Model */,
 				BD4178F62AC8401A007AD426 /* ViewController */,
+				BD9B48182AC950D700FF9202 /* ImageRepository.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				BD4178CF2AC803A4007AD426 /* SceneDelegate.swift in Sources */,
 				BD4178EE2AC833AB007AD426 /* CachedImage.swift in Sources */,
 				BD9B48172AC94A3700FF9202 /* UIImageView+THImageHelper.swift in Sources */,
+				BD9B48192AC950D700FF9202 /* ImageRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

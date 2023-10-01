@@ -29,6 +29,7 @@ final class ImageHelper: ImageCache {
       memoryCache.set(imageData, forKey: urlString)
       return imageData
     }
+
     guard let url = URL(string: urlString) else {
       return nil
     }
