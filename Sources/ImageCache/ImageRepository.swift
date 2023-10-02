@@ -57,9 +57,13 @@ public actor ImageRepository: ImageRepositoryProtocol {
   /// *메모리와 디스크(저장소)캐시에 모두 저장된다.
   public func downloadImage(imageURL: URL) async -> UIImage? {
     let request = URLRequest(url: imageURL)
-    let (data, response) = try! await session.data(for: request)
-    let cachedData = CachedURLResponse(response: response, data: data)
-    cache.storeCachedResponse(cachedData, for: request)
-    return UIImage(data: data)
+    do {
+      let (data, response) = try await session.data(for: request)
+      let cachedData = CachedURLResponse(response: response, data: data)
+      cache.storeCachedResponse(cachedData, for: request)
+      return UIImage(data: data)
+    } catch {
+      return nil
+    }
   }
 }
