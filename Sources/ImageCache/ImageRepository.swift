@@ -9,9 +9,22 @@ import UIKit
 
 public protocol ImageRepositoryProtocol {
   func fetchImage(imageURL: URL) async -> UIImage?
-  func downloadImage(imageURL: URL) async -> UIImage?
-  func loadImageFromCache(imageURL: URL) async -> UIImage?
 }
+
+public enum THNetwork {
+  public enum HeaderField {
+    public static let NONE_MATCH = "If-None-Match"
+    public static let ETAG = "Etag"
+  }
+  
+  public enum APIRequest {
+    public static let SUCCESS: Int = 200
+    public static let NOT_MODIFIED: Int = 304
+  }
+}
+
+public typealias THHeaderFields = THNetwork.HeaderField
+public typealias THRequestStatus = THNetwork.APIRequest
 
 public actor ImageRepository: ImageRepositoryProtocol {
   /// - URLCache는 thread-safe하다.
@@ -33,17 +46,52 @@ public actor ImageRepository: ImageRepositoryProtocol {
   
   public func fetchImage(imageURL: URL) async -> UIImage? {
     let request = URLRequest(url: imageURL)
-    if cache.cachedResponse(for: request) != nil {
-      return await loadImageFromCache(imageURL: imageURL)
+    if let cachedResponse = cache.cachedResponse(for: request) {
+      return await fetch(for: imageURL, with: cachedResponse)
     } else {
       return await downloadImage(imageURL: imageURL)
     }
   }
   
+  private func fetch(for imageURL: URL, with cachedResponse: CachedURLResponse) async -> UIImage? {
+    /// 요청(Request) 생성
+    var request = URLRequest(url: imageURL, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData)
+    
+    if let httpResponse = cachedResponse.response as? HTTPURLResponse,
+       let etag = httpResponse.allHeaderFields[THHeaderFields.ETAG] as? String {
+      request.addValue(etag, forHTTPHeaderField: THHeaderFields.NONE_MATCH)
+    }
+    
+    /// 캐싱 데이터 검증
+    do {
+      let (data, response) = try await session.data(for: request)
+      guard let httpResponse = response as? HTTPURLResponse else { return nil }
+      
+      /// status code : 304
+      if httpResponse.statusCode == THRequestStatus.NOT_MODIFIED {
+        /// 캐시된 데이터 사용
+        return await loadImageFromCache(imageURL: imageURL)
+      }
+      
+      /// status code : 200
+      if httpResponse.statusCode == THRequestStatus.SUCCESS {
+        /// 새 이미지 사용
+        let cachedData = CachedURLResponse(response: response, data: data)
+        cache.storeCachedResponse(cachedData, for: request)
+        return UIImage(data: data)
+      }
+    } catch {
+      return nil
+    }
+    
+    return nil
+  }
+  
   /// 캐시된 URL 응답 반환
   /// ... 요청을 통해 데이터를 찾은 다음에 검색된 데이터로 UIImage를 초기화함
-  public func loadImageFromCache(imageURL: URL) async -> UIImage? {
+  private func loadImageFromCache(imageURL: URL) async -> UIImage? {
     let request = URLRequest(url: imageURL)
+    
     if let data = cache.cachedResponse(for: request)?.data,
        let image = UIImage(data: data) {
       return image
@@ -51,12 +99,13 @@ public actor ImageRepository: ImageRepositoryProtocol {
       return nil
     }
   }
-
+  
   /// 네트워크 호출
   /// 데이터가 있는지 확인한 다음에 CachedURLResponse 형식으로 저장한다.
   /// *메모리와 디스크(저장소)캐시에 모두 저장된다.
-  public func downloadImage(imageURL: URL) async -> UIImage? {
+  private func downloadImage(imageURL: URL) async -> UIImage? {
     let request = URLRequest(url: imageURL)
+    
     do {
       let (data, response) = try await session.data(for: request)
       let cachedData = CachedURLResponse(response: response, data: data)
